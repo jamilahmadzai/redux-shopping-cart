@@ -1,10 +1,10 @@
-import { DECREASE, INCREASE, CLEAR_CART, REMOVE } from "./actions";
+import { DECREASE, INCREASE, CLEAR_CART, REMOVE, GET_TOTALS } from "./actions";
 import cartItems from "./cart-items";
 
 const initailState = {
   cart: cartItems,
-  total: 270,
-  amount: 78,
+  total: 0,
+  amount: 0,
 };
 
 export const reducer = (state = initailState, action) => {
@@ -53,6 +53,26 @@ export const reducer = (state = initailState, action) => {
         return item.id !== action.payload.id;
       }),
     };
+  }
+
+  if (action.type === GET_TOTALS) {
+    let { total, amount } = state.cart.reduce(
+      (cartTotal, cartItem) => {
+        const { price, amount } = cartItem;
+        const itemTotal = price * amount;
+
+        cartTotal.total += itemTotal;
+        cartTotal.amount += amount;
+
+        return cartTotal;
+      },
+      {
+        total: 0,
+        amount: 0,
+      }
+    );
+    total = parseFloat(total.toFixed(2));
+    return { ...state, total, amount };
   }
   return state;
 };
