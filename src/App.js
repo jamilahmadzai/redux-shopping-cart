@@ -2,28 +2,24 @@ import React from "react";
 // components
 import Navbar from "./components/Navbar";
 import CartContainer from "./components/CartContainer";
-// items
 import cartItems from "./cart-items";
-// redux stuff
 import { createStore } from "redux";
+import { DECREASE, INCREASE } from "./actions";
+import { reducer } from "./reducer";
+import { Provider } from "react-redux";
 
-const initailState = {
-  count: 0,
-};
-
-const reducer = (state = initailState, action) => {
-  console.log(state, action);
-};
 const store = createStore(reducer);
+
+console.log(store.getState());
 
 function App() {
   // cart setup
 
   return (
-    <main>
+    <Provider store={store}>
       <Navbar />
       <CartContainer cart={cartItems} />
-    </main>
+    </Provider>
   );
 }
 
