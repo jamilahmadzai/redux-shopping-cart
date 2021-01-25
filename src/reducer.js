@@ -1,5 +1,14 @@
-import { DECREASE, INCREASE, CLEAR_CART, REMOVE, GET_TOTALS } from "./actions";
+import React from "react";
+import {
+  DECREASE,
+  INCREASE,
+  CLEAR_CART,
+  REMOVE,
+  GET_TOTALS,
+  CHECKOUT,
+} from "./actions";
 import cartItems from "./cart-items";
+import PaymentPage from "./pages/paymentPage";
 
 const initailState = {
   cart: cartItems,
@@ -11,6 +20,7 @@ export const reducer = (state = initailState, action) => {
   if (action.type === CLEAR_CART) {
     return { ...state, cart: [], amount: 0 };
   }
+
   if (action.type === INCREASE) {
     const newCart = state.cart.map((cartItem) => {
       if (cartItem.id === action.payload.id) {

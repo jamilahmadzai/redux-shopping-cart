@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import CartItem from "./CartItem";
 import { connect } from "react-redux";
-import { clearCart, GET_TOTALS } from "../actions";
+import { clearCart, GET_TOTALS, CHECKOUT } from "../actions";
+import PaymentPage from "../pages/paymentPage";
+import { Link } from "react-router-dom";
 
 const CartContainer = ({ cart = [], total, clearCart, getTotals }) => {
   useEffect(() => {
@@ -19,6 +21,11 @@ const CartContainer = ({ cart = [], total, clearCart, getTotals }) => {
       </section>
     );
   }
+
+  const checkout = () => {
+    return <Link to="/PaymentPage"></Link>;
+  };
+
   return (
     <section className="cart">
       <header>
@@ -34,12 +41,17 @@ const CartContainer = ({ cart = [], total, clearCart, getTotals }) => {
       <footer>
         <div className="cart-total">
           <h4>
-            total <span>${total}</span>
+            total <span>€{total}</span>
           </h4>
         </div>
-        <button className="btn clear-btn" onClick={clearCart}>
-          clear cart
-        </button>
+        <div className="btns">
+          <button className="btn clear-btn" onClick={clearCart}>
+            clear cart
+          </button>
+          <Link className="btn checkout-btn" to="/payment" onClick={checkout}>
+            checkout
+          </Link>
+        </div>
       </footer>
     </section>
   );
