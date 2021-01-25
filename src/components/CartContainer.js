@@ -13,7 +13,7 @@ const CartContainer = ({ cart = [], total, clearCart, getTotals }) => {
       <section className="cart">
         {/* cart header */}
         <header>
-          <h2>your bag</h2>
+          <h2>your cart</h2>
           <h4 className="empty-cart">is currently empty</h4>
         </header>
       </section>
@@ -22,7 +22,7 @@ const CartContainer = ({ cart = [], total, clearCart, getTotals }) => {
   return (
     <section className="cart">
       <header>
-        <h2>your bag</h2>
+        <h2>My cart</h2>
       </header>
 
       <article>
@@ -32,7 +32,6 @@ const CartContainer = ({ cart = [], total, clearCart, getTotals }) => {
       </article>
 
       <footer>
-        <hr />
         <div className="cart-total">
           <h4>
             total <span>${total}</span>

@@ -27,7 +27,7 @@ Variables
   --radius: 0.5rem;
   --large-screen-width: 1170px;
   --small-screen-width: 90vw;
-  --fixed-width: 50rem;
+  --fixed-width: 60rem;
 }
 * {
   margin: 0;
@@ -36,7 +36,6 @@ Variables
 }
 body {
   font-family: var(--ff-primary);
-  background: var(--clr-grey-10);
   color: var(--clr-grey-1);
   line-height: 1.5;
   font-size: 0.875rem;
@@ -72,6 +71,13 @@ h4 {
 p {
   margin-bottom: 1.25rem;
 }
+
+@media screen and (max-width: 500px) {
+  .user-account {
+    display: none;
+  }
+}
+
 @media screen and (min-width: 800px) {
   h1 {
     font-size: 4rem;
@@ -122,7 +128,7 @@ Navbar
 ===============
 */
 nav {
-  background: var(--clr-primary);
+  background: var(--clr-grey-10);
   padding: 1.25rem 2rem;
 }
 .nav-center {
@@ -135,32 +141,74 @@ nav {
 }
 nav h3 {
   margin-bottom: 0;
-  color: var(--clr-white);
+  color: var(--clr-black);
 }
 .nav-container {
-  display: block;
+  display: flex;
+  justify-content: space-between;
   position: relative;
 }
 nav svg {
   width: 2rem;
-  fill: var(--clr-white);
+  fill: var(--clr-black);
 }
 .amount-container {
   position: absolute;
-  top: -0.75rem;
-  right: -0.75rem;
+  top: 0.2rem;
+  right: 0.1rem;
   width: 1.75rem;
   height: 1.75rem;
   border-radius: 50%;
-  background: var(--clr-primary-light);
+  background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .total-amount {
-  color: var(--clr-white);
+  color: var(--clr-black);
   margin-bottom: 0;
-  font-size: 1.25rem;
+  font-size: 0.8rem;
+}
+
+.cart-logo {
+  position: absolute;
+  top: 2rem;
+  right: 0.1rem;
+  width: 1.75rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.your-cart {
+  color: var(--clr-black);
+  margin-bottom: 0;
+  font-size: 0.8rem;
+}
+
+.user-logo {
+  position: absolute;
+  top: 2rem;
+  right: 1.4rem;
+  width: 1.75rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 50%;
+  line-height: 1;
+}
+
+.account {
+  text-align: center;
+  color: var(--clr-black);
+  margin-bottom: 0;
+  font-size: 0.8rem;
+}
+
+.user-account {
+  margin-right: 40px;
 }
 /*
 =============== 
@@ -169,7 +217,7 @@ Cart
 */
 .cart {
   min-height: calc(100vh - 80px);
-  width: 90vw;
+  width: 100vw;
   margin: 0 auto;
   padding: 2.5rem 0;
   max-width: var(--fixed-width);
@@ -217,7 +265,8 @@ Cart Item
   align-items: center;
   grid-template-columns: auto 1fr auto;
   grid-column-gap: 1.5rem;
-  margin: 1.5rem 0;
+  margin-top: 1.5rem;
+  margin-bottom: 3rem;
 }
 .cart-item img {
   width: 5rem;
@@ -233,7 +282,7 @@ Cart Item
   color: var(--clr-grey-5);
 }
 .remove-btn {
-  color: var(--clr-primary);
+  color: var(--clr-red-light);
   letter-spacing: var(--spacing);
   cursor: pointer;
   font-size: 0.85rem;
@@ -243,7 +292,8 @@ Cart Item
   transition: var(--transition);
 }
 .remove-btn:hover {
-  color: var(--clr-primary-light);
+  color: var(--clr-red-dark);
+  transition: var(--transition);
 }
 .amount-btn {
   width: 1.5rem;
@@ -262,4 +312,50 @@ Cart Item
   margin-bottom: 0;
   font-size: 1.25rem;
   line-height: 1;
+}
+.plus-minus-input {
+  display: grid;
+  align-items: center;
+  grid-template-columns: auto auto auto;
+  margin: 1.5rem 0;
+}
+
+.plus-minus-input .input-group-field {
+  text-align: center;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  padding: 0.8rem;
+  width: 90px;
+  height: 40px;
+  border: none;
+  font-size: 1rem;
+  box-shadow: inset 0 0 2px #202020;
+  outline: none;
+}
+
+.plus-minus-input .input-group-field:focus {
+  outline: none;
+  box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+  border-color: rgba(223, 225, 229, 0);
+}
+
+.plus-minus-input .input-group-button .circle {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: #1779ba;
+
+  padding: 0;
+}
+
+.plus-minus-input .input-group-button .circle:focus {
+  outline: none;
+}
+.plus-minus-input .input-group-button .circle:hover {
+  color: var(--clr-primary-dark);
+}
+
+.plus-minus-input .input-group-field::-webkit-inner-spin-button,
+.plus-minus-input .input-group-field ::-webkit-outer-spin-button {
+  appearance: none;
 }
