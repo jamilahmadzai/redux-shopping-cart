@@ -5,7 +5,7 @@ import {
   CLEAR_CART,
   REMOVE,
   GET_TOTALS,
-  CHECKOUT,
+  EMPTY_CART,
 } from "./actions";
 import cartItems from "./cart-items";
 import PaymentPage from "./pages/paymentPage";
@@ -19,6 +19,10 @@ const initailState = {
 export const reducer = (state = initailState, action) => {
   if (action.type === CLEAR_CART) {
     return { ...state, cart: [], amount: 0 };
+  }
+
+  if (action.type === EMPTY_CART) {
+    return { ...state, cart: cartItems, amount: 0, total: 0 };
   }
 
   if (action.type === INCREASE) {
