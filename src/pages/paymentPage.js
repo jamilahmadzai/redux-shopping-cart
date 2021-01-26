@@ -9,16 +9,16 @@ function PaymentPage({ total }) {
     <div>
       <Navbar />
 
-      <div className="payment">
+      <section className="payment">
         <header>
           <h2>Please select your payment option</h2>
         </header>
         <div className="payment-body">
           {payingMethods.map((method, index) => {
             return (
-              <a key={index} className="paying-method-images">
+              <Link to="/address" key={index} className="paying-method-images">
                 <img src={method} alt="paying method" />
-              </a>
+              </Link>
             );
           })}
         </div>
@@ -32,13 +32,13 @@ function PaymentPage({ total }) {
             </h4>
           </div>
         </footer>
-      </div>
+      </section>
     </div>
   );
 }
 
 const mapStateToProps = (state) => {
-  return { cart: state.cart, total: state.total };
+  return { total: state.total };
 };
 
 export default connect(mapStateToProps)(PaymentPage);

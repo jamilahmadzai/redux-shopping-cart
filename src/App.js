@@ -7,6 +7,8 @@ import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 
 import { reducer } from "./reducer";
 import { Provider } from "react-redux";
+import AddressPage from "./pages/addressPage";
+import OrderConfirmationPage from "./pages/orderConfirmationPage";
 
 const store = createStore(reducer);
 
@@ -21,6 +23,9 @@ function App() {
         <Switch>
           <Route path="/" exact component={CartPage} />
           <Route path="/payment" component={PaymentPage} />
+          <Route path="/address" component={AddressPage} />
+          <Route path="/order" component={OrderConfirmationPage} />
+
           {/* <CartPage /> */}
           {/* <PaymentPage /> */}
         </Switch>

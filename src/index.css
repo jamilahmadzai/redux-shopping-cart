@@ -217,13 +217,110 @@ Cart
 ===============
 */
 .cart,
-.payment {
+.payment,
+.address {
   min-height: calc(100vh - 80px);
   width: 100vw;
   margin: 0 auto;
   padding: 2.5rem 0;
   max-width: var(--fixed-width);
 }
+
+/* Form */
+.address-center {
+  box-shadow: 0 0 4px rgba(32, 33, 36, 0.28);
+  border-radius: 3px;
+  display: grid;
+  grid-template-columns: auto auto;
+  width: 60%;
+  margin: 4rem auto;
+  border: none;
+}
+
+.btn-reset {
+  cursor: pointer;
+  /* background: transparent; */
+  padding: 0.5rem 1rem;
+  color: var(--clr-white);
+
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  width: 40%;
+}
+
+.btn-reset:hover {
+  background: var(--clr-red-dark);
+  color: var(--clr-white);
+  border-color: var(--clr-primary-light);
+}
+
+.address-center input:focus {
+  outline: none;
+  transition: var(--transition);
+  /* box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28); */
+  border-color: var(--clr-primary-light);
+}
+
+.address-center input {
+  outline: none;
+  font-family: var(--ff-primary);
+  font-size: 0.8rem;
+  padding: 5px;
+  margin: 20px;
+  border: none;
+  border-bottom: 1px solid rgba(32, 33, 36, 0.28);
+}
+
+.address-center h4 {
+  letter-spacing: 1px;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
+.address h4 {
+  position: relative;
+}
+
+.address h4 span {
+  letter-spacing: 1px;
+  position: absolute;
+  margin-left: 12rem;
+  margin-top: 2rem;
+}
+
+.footer .btns {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.footer .btns .btn {
+  width: 200px;
+  margin: auto;
+  padding: 10px;
+  text-align: center;
+}
+
+.btns .home-btn {
+  background: var(--clr-primary);
+}
+
+.btns .home-btn:hover {
+  color: var(--clr-primary);
+}
+.confirm-btn {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  color: var(--clr-white);
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  width: 70%;
+}
+
 .cart h2 {
   text-transform: uppercase;
   text-align: center;
@@ -430,17 +527,17 @@ Cart Item
 }
 
 .home-btn {
-  background: transparent;
+  background: var(--clr-primary-dark);
   padding: 0.5rem 1rem;
-  color: var(--clr-black);
-  border: 1px solid var(--clr-red-light);
+  color: var(--clr-white);
+  border: 1px solid var(--clr-primary-light);
   margin-top: 3rem;
   margin-bottom: 2rem;
   text-align: center;
   width: 100%;
 }
 .home-btn:hover {
-  background: var(--clr-red-dark);
+  background: var(--clr-primary-light);
   color: var(--clr-white);
   border-color: var(--clr-primary-light);
 }

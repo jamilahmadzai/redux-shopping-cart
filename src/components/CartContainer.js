@@ -29,7 +29,7 @@ const CartContainer = ({ cart = [], total, clearCart, getTotals }) => {
   return (
     <section className="cart">
       <header>
-        <h2>My cart</h2>
+        <h2>Your cart</h2>
       </header>
 
       <article>
