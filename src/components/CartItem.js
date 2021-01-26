@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { INCREASE, DECREASE, REMOVE } from "../actions";
 
@@ -13,6 +13,62 @@ const CartItem = ({
   decrease,
 }) => {
   const [number, setNumber] = useState(0);
+  let [width, setWidth] = useState(window.innerWidth);
+  const increaseButton = (
+    <button
+      type="button"
+      className="button hollow circle"
+      data-quantity="minus"
+      data-field="quantity"
+      onClick={decrease}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="25"
+        height="25"
+        fill="currentColor"
+        className="bi bi-dash-circle"
+        viewBox="0 0 16 16"
+      >
+        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+      </svg>
+    </button>
+  );
+  const decreaseButton = (
+    <button
+      type="button"
+      className="button hollow circle"
+      data-quantity="plus"
+      data-field="quantity"
+      onClick={increase}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="25"
+        height="25"
+        fill="currentColor"
+        className="bi bi-plus-circle"
+        viewBox="0 0 16 16"
+      >
+        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+      </svg>
+    </button>
+  );
+
+  const resizeListener = () => {
+    setWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", resizeListener);
+    let width = window.innerWidth;
+    return () => {
+      window.removeEventListener("resize", resizeListener);
+    };
+  }, [window.innerWidth]);
+
   return (
     <div>
       <div className="cart-item">
@@ -40,48 +96,11 @@ const CartItem = ({
 
         <div className="input-group plus-minus-input">
           <div className="input-group-button">
-            <button
-              type="button"
-              className="button hollow circle"
-              data-quantity="minus"
-              data-field="quantity"
-              onClick={decrease}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="25"
-                height="25"
-                fill="currentColor"
-                className="bi bi-dash-circle"
-                viewBox="0 0 16 16"
-              >
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
-              </svg>
-            </button>
+            {width > 500 ? increaseButton : decreaseButton}
           </div>
           <input type="number" value={amount} className="input-group-field" />
-
           <div className="input-group-button">
-            <button
-              type="button"
-              className="button hollow circle"
-              data-quantity="plus"
-              data-field="quantity"
-              onClick={increase}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="25"
-                height="25"
-                fill="currentColor"
-                className="bi bi-plus-circle"
-                viewBox="0 0 16 16"
-              >
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-              </svg>
-            </button>
+            {width > 500 ? decreaseButton : increaseButton}
           </div>
         </div>
       </div>
